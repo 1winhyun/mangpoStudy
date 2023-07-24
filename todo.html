@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Todo List</h1>
+  <div class="input-container">
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요">
+    <button id="add-button">추가</button>
+  </div>
+  <ul id="todo-list"></ul>
+  <br>
+  <button id="green-button">한 일 표시</button>
+  <button id="red-button">안한 일 표시</button>
+  <button id="all-button">전체 표시</button>
+  <script>
+   function add() {
+      let todoinput=document.getElementById("todo-input");
+      let todolist=document.getElementById("todo-list");
+      let doing=document.createElement("li");
+      doing.textContent=todoinput.value;
+      todolist.appendChild(doing);//doing의 내용을 todolist에 추가한다.
+      todoinput.value="";
+
+      let donebutton=document.createElement("button");
+      donebutton.textContent="했음";
+      doing.appendChild(donebutton);//donebutton의 내용을 doing에 추가한다.
+      donebutton.addEventListener("click",function(){
+        doing.style.color="green";
+        doing.style.fontWeight="bold";
+      });
+
+      let nodonebutton=document.createElement("button");
+      nodonebutton.textContent="안했음";
+      doing.appendChild(nodonebutton);//donebutton의 내용을 doing에 추가한다.
+      nodonebutton.addEventListener("click",function(){
+        doing.style.color="red";
+        doing.style.fontWeight="bold";
+        doing.style.textDecoration="line-through";
+      });
+    }
+    
+    function green(){
+      let todo=document.querySelectorAll("li");//모든 li요소들을 선택한다
+      for(let i=0;i<todo.length;i++){
+        let todoing=todo[i];
+        if(todoing.style.color=="green"){
+          todoing.style.display="block";
+        }
+        else{
+          todoing.style.display="none";
+        }
+      }
+    }
+
+    function red(){
+      let todo=document.querySelectorAll("li");//모든 li요소들을 선택한다
+      for(let i=0;i<todo.length;i++){
+        let todoing=todo[i];
+        if(todoing.style.color=="red"){
+          todoing.style.display="block";
+        }
+        else{
+          todoing.style.display="none";
+        }
+      }
+    }
+
+    function all() {
+      let todo=document.querySelectorAll("li"); // 모든 li 요소들을 선택합니다.
+      for(let i=0;i<todo.length;i++){
+        let todoing=todo[i];
+        todoing.style.display="block"; // 모든 항목을 보이도록 display 속성을 초기화합니다.
+    }
+  }
+
+    let button=document.getElementById("add-button");
+    button.addEventListener("click",add);//버튼을 클릭할 때마다 add함수 실행
+
+    let greenbutton=document.getElementById("green-button");
+    greenbutton.addEventListener("click",green);
+
+    let redbutton=document.getElementById("red-button");
+    redbutton.addEventListener("click",red);
+
+    let allbutton=document.getElementById("all-button");
+    allbutton.addEventListener("click",all);
+    
+  </script>
+</body>
+</html>
