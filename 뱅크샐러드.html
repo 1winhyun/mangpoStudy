@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            header nav{
+                display:inline-block;
+                margin-right:40px;
+                font-style:normal;
+                font-size:15px;
+                font-weight:bold;
+            }
+            header{
+                margin-top:20px;
+                position:fixed;
+                background-color:white;
+                top:0;
+                z-index:999;
+            }
+            header nav:first-child{
+                font-size:24px;
+                margin-left:49px;
+            }
+            header nav:not(:first-child):hover{
+                color:lightgreen;
+            }
+            .slider-container{
+                margin-top:100px;
+                overflow:hidden;
+            }
+            .slider{
+                display:flex;
+                animation: slide 20s infinite;
+            }
+            @keyframes slide{
+            0%{transform:translateX(0);}
+            20%{transform:translateX(0);}
+            25%{transform:translateX(-100%);}
+            45%{transform:translateX(-100%);}
+            50%{transform:translateX(-200%);}
+            70%{transform:translateX(-200%);}
+            75%{transform:translateX(-300%);}
+            95%{transform:translateX(-300%);}
+            100%{transform:translateX(0);} 
+            }
+            div img{
+                margin-right:10px;
+            }
+            button{
+                margin-top:40px;
+                border:1px solid lightgrey;
+                background-color:white;
+                color: grey;
+                padding:5px;
+                text-align:right;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav style="font-size: 24px; margin-left:49px;">banksalad</nav>
+            <nav>신용카드</nav>
+            <nav>신용대출</nav>
+            <nav>대환대출</nav>
+            <nav>주택담보대출</nav>
+            <nav>전세자금대출</nav>
+            <nav>대출금리쿠폰</nav>
+            <nav>예적금</nav>
+            <nav>무료건강검사</nav>
+            <nav>돈이 된다! 머니피드</nav>
+        </header>
+
+        <div class="slider-container">
+            <div class="slider">
+                <img src="1.png">
+                <img src="2.png">
+                <img src="3.png">
+                <img src="4.png">
+            </div>
+        </div>
+
+        <img src="5.png">
+        
+        <div style="margin-left:500px; margin-top:50px; font-size:25px; margin-bottom:30px;">뱅크샐러드 Pick!</div>
+        
+        <div style="margin-bottom:500px; margin-left:500px;">
+            <div class="image-box" style="border:1px solid lightgray; display:inline-block; margin-right:10px;">
+                <img src="6.png">
+                <div>카드</div>
+                <div>신용카드 추천</div>
+                <button>&#60</button>
+                <button>&#62</button>
+            </div>
+            <div class="image-box" style="border:1px solid lightgray; display:inline-block; margin-right:10px;">
+                <img id="pic3" src="7-1.png">
+                <div>은행</div>
+                <div id="change3">BEST 입출금통장</div>
+                <button onclick="changetext3()">&#60</button>
+                <button onclick="changetext3()">&#62</button>
+            </div>
+            <div class="image-box" style="border:1px solid lightgray; display:inline-block; margin-right:10px;">
+                <img id="pic1" src="8-1.png">
+                <div>투자</div>
+                <div id="change1">투자 성향별 BEST어드바이저</div>
+                <button onclick="changetext1()">&#60</button>
+                <button onclick="changetext1()">&#62</button>
+            </div>
+            <div class="image-box" style="border:1px solid lightgray; display:inline-block; margin-right:10px;">
+                <img id="pic2" src="9-1.png">
+                <div>연금</div>
+                <div id="change2">연금저축, 어디서 가입할까?</div>
+                <button onclick="changetext2()">&#60</button>
+                <button onclick="changetext2()">&#62</button>
+            </div>
+        </div>
+        <script>
+            let now1=0;
+            let text1=['투자 성향별 BEST어드바이저','증권사 CMA 체크카드'];
+            let picture1=['8-1.png','8-2.png'];
+            function changetext1(){
+                let change1=document.getElementById('change1');
+                let pic1=document.getElementById('pic1');
+                now1=(now1+1)%text1.length;
+                change1.innerText=text1[now1];
+                pic1.src=picture1[now1];
+            }
+
+            let now2=0;
+            let text2=['연금저축, 어디서 가입할까?','연금저축 로보어드바이저 추천'];
+            let picture2=['9-1.png','9-2.png'];
+            function changetext2(){
+                let change2=document.getElementById('change2');
+                let pic2=document.getElementById('pic2');
+                now2=(now2+1)%text2.length;
+                change2.innerText=text2[now2];
+                pic2.src=picture2[now2];
+            }
+
+            let now3=0;
+            let text3=['BEST 입출금통장','BEST 자유적금', '쉽게 돈모으는 BEST 잔돈저축'];
+            let picture3=['7-1.png','7-2.png','7-3.png'];
+            function changetext3(){
+                let change3=document.getElementById('change3');
+                let pic3=document.getElementById('pic3');
+                now3=(now3+1)%text3.length;
+                change3.innerText=text3[now3];
+                pic3.src=picture3[now3];
+            }
+        </script>
+    </body>
+</html>
+
